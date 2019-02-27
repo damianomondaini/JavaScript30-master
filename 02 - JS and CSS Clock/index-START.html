@@ -62,13 +62,41 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: center right;
     }
 
   </style>
 
   <script>
+    var secondCloak = document.querySelector(".second-hand");
+    var minuteCloak = document.querySelector(".min-hand");
+    var hourCloak = document.querySelector(".hour-hand");
 
 
+    function seconds() {
+      var d = new Date();
+      var seconds = d.getSeconds();
+      var deg = 6*seconds;
+      secondCloak.style.transform = "rotate(calc(90deg + " + deg + "deg))";
+    }
+
+    function minutes() {
+      var d = new Date();
+      var minutes = d.getMinutes();
+      var deg = 6*minutes;
+      minuteCloak.style.transform = "rotate(calc(90deg + " + deg + "deg))";
+    }
+
+    function hours() {
+      var d = new Date();
+      var hours = d.getHours();
+      var deg = 15*hours;
+      hourCloak.style.transform = "rotate(calc(90deg + " + deg + "deg))";
+    }
+
+    window.setInterval(seconds, 1);
+    window.setInterval(minutes, 1);
+    window.setInterval(hours, 1);
   </script>
 </body>
 </html>
