@@ -26,6 +26,12 @@
       misc styles, nothing to do with CSS variables
     */
 
+    :root{
+      --padding: 10px;
+      --blur: 10px;
+      --base: #ffc600;
+    }
+
     body {
       text-align: center;
       background: #193549;
@@ -42,9 +48,39 @@
     input {
       width: 100px;
     }
+
+    img{
+      padding: var(--padding);
+      background-color: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl{
+      color: var(--base);
+    }
   </style>
 
   <script>
+    var root = document.documentElement;
+    var spacing = document.getElementById("spacing");
+    var blur = document.getElementById("blur");
+    var base = document.getElementById("base");
+
+    function addSpacing(){
+      root.style.setProperty('--padding', spacing.value + "px");      
+    }
+
+    function addBlur(){
+      root.style.setProperty('--blur', blur.value + "px");      
+    }
+
+    function addBase(){
+      root.style.setProperty('--base', base.value);      
+    }
+
+    spacing.addEventListener("input", addSpacing);
+    blur.addEventListener("input", addBlur);
+    base.addEventListener("input", addBase);
   </script>
 
 </body>
